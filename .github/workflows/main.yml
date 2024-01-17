@@ -1,6 +1,8 @@
 name: "Convert issues to markdown files"
 on:
-  workflow_dispatch:
+  issues:
+    types:
+      - labeled
 
 jobs:
   issue_to_markdown:
