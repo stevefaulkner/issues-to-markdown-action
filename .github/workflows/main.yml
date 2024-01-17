@@ -1,21 +1,33 @@
-name: "Convert issues to markdown files"
+name: Save Done Issues as Markdown
+
 on:
-  issues:
-    types:
-      - labeled
+  workflow_dispatch:  # Allows you to manually trigger the workflow
 
 jobs:
-  issue_to_markdown:
+  save_issues:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.issuetomd1 }}
-      - name: Issue to Markdown
-        uses: stevefaulkner/issue-to-markdown@v1
-        with:
-          token: ${{ secrets.issuetomd1 }}  
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'docs: update contents'
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Save Issues
+      env:
+        GITHUB_TOKEN: ${{ secrets.issuetomd1 }}
+      run: |
+        python save_issues.py
+
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name 'stevefaulkner'
+        git config --global user.email 'faulkner.steve@gmail.com'
+        git add -A
+        git commit -m "Update Markdown files for issues labeled as done" -a || echo "No changes to commit"
+        git push
+
  
