@@ -8,13 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.toot }}
+          token: ${{ secrets.issuetomd1 }}
       - name: Issue to Markdown
-        uses: eunjae-lee/issue-to-markdown@v1.2.2
-            
+        uses: eunjae-lee/issue-to-markdown@v1.2.2    
         with:
-          token: ${{ secrets.toot }}  
-
+          token: ${{ secrets.issuetomd1 }}  
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'docs: update contents'
