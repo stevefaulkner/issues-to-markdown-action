@@ -1,5 +1,4 @@
 name: Save Done Issues as Markdown
-
 on:
   workflow_dispatch:  # Allows you to manually trigger the workflow
 
