@@ -57,4 +57,5 @@ jobs:
         github_token: ${{ secrets.issuetomd1 }}
         pr_title: "Update Markdown files for issues labeled as done"
         pr_body: "This PR updates the Markdown files for issues labeled as done."
+        source_branch: update-markdown-${{ github.run_id }}
         destination_branch: "main"  # Change this to your default branch if it's not 'main'
