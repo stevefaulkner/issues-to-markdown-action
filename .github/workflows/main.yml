@@ -31,7 +31,19 @@ jobs:
       run: |
         git checkout -b update-markdown-${{ github.run_id }}
 
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git status
+        if git diff --quiet; then
+          echo "No changes to commit."
+          echo "::set-output name=changes::false"
+        else
+          echo "::set-output name=changes::true"
+        fi
+
     - name: Commit files
+      if: steps.check_changes.outputs.changes == 'true'
       run: |
         git config --global user.name 'stevefaulkner'
         git config --global user.email 'faulkner.steve@gmail.com'
@@ -39,12 +51,14 @@ jobs:
         git commit -m "Update Markdown files for issues labeled as done"
 
     - name: Push changes
+      if: steps.check_changes.outputs.changes == 'true'
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.issuetomd1 }}
         branch: update-markdown-${{ github.run_id }}
 
     - name: Create Pull Request
+      if: steps.check_changes.outputs.changes == 'true'
       uses: repo-sync/pull-request@v2
       with:
         github_token: ${{ secrets.issuetomd1 }}
