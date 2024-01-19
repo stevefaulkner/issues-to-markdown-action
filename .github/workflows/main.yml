@@ -1,8 +1,6 @@
 name: Save Done Issues as Markdown and Create PR
 
 on:
-  schedule:
-    - cron: '0 * * * *'  # This will run the action every hour; adjust as needed
   workflow_dispatch:  # Allows you to manually trigger the workflow
 
 jobs:
@@ -55,56 +53,4 @@ jobs:
         destination_branch: "main"  # Change this to your default branch if it's not 'main'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-jobs:
-  save_issues:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Install Python dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests
-
-    - name: Save Issues
-      env:
-        GITHUB_TOKEN: ${{ secrets.issuetomd1 }}
-      run: |
-        python save_issues.py
-
-    - name: Commit and Push Changes
-      run: |
-        git config --global user.name 'stevefaulkner'
-        git config --global user.email 'faulkner.steve@gmail.com'
-        git add -A
-        git commit -m "Update Markdown files for issues labeled as done" -a || echo "No changes to commit"
-        git push
  
