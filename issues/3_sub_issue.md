@@ -1,4 +1,4 @@
-![image](images/issue-3/7018ccd2-5dda-4c92-bd4f-eac2a8a29194.png)
+![image](/images/issue-3/7018ccd2-5dda-4c92-bd4f-eac2a8a29194.png)
 
 
 # test issue 2
