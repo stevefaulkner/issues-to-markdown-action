@@ -1,5 +1,5 @@
 # test issue1
-![test image](images/issue-7/e8b7ac63-9363-4a1e-8ac3-3809f958fd68.png)
+![test image](/images/issue-7/e8b7ac63-9363-4a1e-8ac3-3809f958fd68.png)
 
 ## Priority
 
