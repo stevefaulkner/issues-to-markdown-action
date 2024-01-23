@@ -47,8 +47,8 @@ def download_and_save_image(url, issue_number):
                 extension = mimetypes.guess_extension(mime_type)
                 path = path.with_suffix(extension)
             path.write_bytes(response.content)
-            # return the file path as a string for our markdown file
-            return str(path)
+            # return the file path as a string URL that can be used in markdown
+            return f'/{path}'
         else:
             print(f"Failed to download image: {url}")
             return None
