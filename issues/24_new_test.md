@@ -1,5 +1,5 @@
 # [specific title]
-![dean](/images/issue-20/1b00d977-171e-4dda-baa2-ce31521702e9.png)
+![select-size1-collapsed](/images/issue-24/28c1b51c-3919-420d-adb7-a506c99b4614.png)
 
 ## Priority
 
